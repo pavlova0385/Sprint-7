@@ -15,7 +15,7 @@ import java.util.Collection;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 @RunWith(Parameterized.class)
-public class как вернуть все обратно OrderCreateTest {
+public class OrderCreateTest {
     private final String[] colors;
     private ScooterApiClient client;
 
