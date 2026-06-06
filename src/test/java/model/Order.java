@@ -60,4 +60,3 @@ public class Order {
         return color;
     }
 }
-

@@ -7,8 +7,6 @@ import model.Courier;
 import model.CourierCredentials;
 import model.Order;
 
-import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 
 public class ScooterApiClient {
@@ -31,7 +29,7 @@ public class ScooterApiClient {
     }
 
     @Step("Создать курьера с телом запроса: {body}")
-    public Response createCourier(Map<String, String> body) {
+    public Response createCourier(String body) {
         return given()
                 .header("Content-type", "application/json")
                 .body(body)
@@ -49,7 +47,7 @@ public class ScooterApiClient {
     }
 
     @Step("Авторизоваться курьером с телом запроса: {body}")
-    public Response loginCourier(Map<String, String> body) {
+    public Response loginCourier(String body) {
         return given()
                 .header("Content-type", "application/json")
                 .body(body)
@@ -71,6 +69,14 @@ public class ScooterApiClient {
                 .body(order)
                 .when()
                 .post(ORDERS_PATH);
+    }
+
+    @Step("Отменить заказ с track: {track}")
+    public Response cancelOrder(Integer track) {
+        return given()
+                .queryParam("track", track)
+                .when()
+                .put(ORDERS_PATH + "/cancel");
     }
 
     @Step("Получить список заказов")
