@@ -1,7 +1,6 @@
 
 target/
-!target/site/allure-maven-plugin/
-!target/site/allure-maven-plugin/**
+
 
 
 .allure/
